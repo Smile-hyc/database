@@ -56,14 +56,22 @@ INSERT INTO national_team (team_id, team_name, country_code, flag_url, fifa_rank
 (48, 'Panama', 'PAN', 'https://flagcdn.com/w80/pa.png', 38, 'L');
 
 INSERT INTO user_info (user_id, username, nickname, total_points, favorite_team_id) VALUES
-(1, 'azteca_host', '??????', 30, 1),
-(2, 'maple_press', '????', 0, 5),
-(3, 'samba_star', '????', 30, 9),
-(4, 'tartan_mid', '?????', 10, 12),
-(5, 'card_trader', '?????', 0, 8),
-(6, 'usa_runner', '????', 0, 13),
-(7, 'atlas_lion', '??????', 0, 10),
-(8, 'euro_scout', '????', 0, 45);
+(1, 'azteca_host', 'AztecaAce', 120, 1),
+(2, 'maple_press', 'MaplePress', 95, 5),
+(3, 'samba_star', 'SambaStar', 88, 9),
+(4, 'tartan_mid', 'TartanBoss', 76, 12),
+(5, 'card_trader', 'CardTrader', 64, 8),
+(6, 'usa_runner', 'EagleRunner', 52, 13),
+(7, 'atlas_lion', 'AtlasLion', 41, 10),
+(8, 'euro_scout', 'EuroScout', 33, 45),
+(9, 'orange_wall', 'OrangeWall', 28, 21),
+(10, 'red_fury', 'RedFury', 24, 29),
+(11, 'albiceleste', 'BlueWhite10', 18, 37),
+(12, 'three_lions', 'ThreeLions', 14, 45),
+(13, 'samurai_pass', 'SamuraiPass', 9, 22),
+(14, 'desert_falcon', 'DesertFalcon', 6, 31),
+(15, 'golden_boot', 'GoldenBoot', 3, 41),
+(16, 'newbie_keeper', 'NewbieKeeper', 0, 28);
 
 INSERT INTO player (player_id, player_name, team_id, position, age, club, market_value, photo_url, is_in_squad) VALUES
 (1, 'Guillermo Ochoa', 1, 'GK', 40, 'AVS', 80.00, '', TRUE),
@@ -374,12 +382,31 @@ INSERT INTO match_guess (guess_id, user_id, match_id, guess_result, guess_home_s
 (9, 1, 73, 'home', 2, 1, TRUE, 30, '2026-05-01 09:00:00'),
 (10, 2, 73, 'draw', 1, 1, FALSE, 0, '2026-05-01 09:10:00'),
 (11, 3, 74, 'draw', 1, 1, TRUE, 30, '2026-05-02 09:00:00'),
-(12, 4, 74, 'draw', 2, 2, TRUE, 10, '2026-05-02 09:20:00');
+(12, 4, 74, 'draw', 2, 2, TRUE, 10, '2026-05-02 09:20:00'),
+(13, 5, 73, 'home', 3, 1, TRUE, 10, '2026-05-01 09:30:00'),
+(14, 6, 73, 'away', 1, 2, FALSE, 0, '2026-05-01 09:35:00'),
+(15, 7, 74, 'draw', 0, 0, TRUE, 10, '2026-05-02 09:35:00'),
+(16, 8, 74, 'home', 2, 1, FALSE, 0, '2026-05-02 09:40:00'),
+(17, 9, 73, 'home', 2, 0, TRUE, 10, '2026-05-01 09:45:00'),
+(18, 10, 74, 'draw', 1, 1, TRUE, 30, '2026-05-02 09:45:00'),
+(19, 11, 73, 'home', 2, 1, TRUE, 30, '2026-05-01 09:50:00'),
+(20, 12, 74, 'away', 0, 1, FALSE, 0, '2026-05-02 09:50:00'),
+(21, 13, 73, 'draw', 1, 1, FALSE, 0, '2026-05-01 09:55:00'),
+(22, 14, 74, 'draw', 2, 2, TRUE, 10, '2026-05-02 09:55:00'),
+(23, 15, 73, 'home', 1, 0, TRUE, 10, '2026-05-01 10:00:00'),
+(24, 16, 74, 'home', 3, 2, FALSE, 0, '2026-05-02 10:00:00');
 
 INSERT INTO point_record (record_id, user_id, match_id, points_change, reason, created_at) VALUES
-(1, 1, 73, 30, '??????????', '2026-05-05 22:20:00'),
-(2, 3, 74, 30, '??????????', '2026-05-06 22:20:00'),
-(3, 4, 74, 10, '?????', '2026-05-06 22:25:00');
+(1, 1, 73, 30, 'Exact score bonus', '2026-05-05 22:20:00'),
+(2, 3, 74, 30, 'Exact score bonus', '2026-05-06 22:20:00'),
+(3, 4, 74, 10, 'Correct result', '2026-05-06 22:25:00'),
+(4, 5, 73, 10, 'Correct result', '2026-05-05 22:30:00'),
+(5, 7, 74, 10, 'Correct result', '2026-05-06 22:30:00'),
+(6, 9, 73, 10, 'Correct result', '2026-05-05 22:35:00'),
+(7, 10, 74, 30, 'Exact score bonus', '2026-05-06 22:35:00'),
+(8, 11, 73, 30, 'Exact score bonus', '2026-05-05 22:40:00'),
+(9, 14, 74, 10, 'Correct result', '2026-05-06 22:40:00'),
+(10, 15, 73, 10, 'Correct result', '2026-05-05 22:45:00');
 
 INSERT INTO card_value_record (card_id, match_id, old_value, new_value, change_reason, changed_at) VALUES
 ((SELECT card_id FROM player_card WHERE player_id = 3), 73, 3600.00, 4200.00, 'goal', '2026-05-05 22:30:00'),
