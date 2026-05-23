@@ -89,4 +89,19 @@ VITE_API_BASE=http://localhost:3001/api
 
 ## 数据说明
 
-球队、球员姓名、俱乐部等字段参考公开足球信息；球员卡类型、评分、虚拟价值、行情变化为课程演示用模拟数据。项目不爬取 eFootball 官方或第三方球员卡图片，不绕过登录或反爬限制。
+本地 seed 数据已经扩充为 2026 世界杯 48 队真实化演示数据：
+
+- 国家队：48 支 2026 世界杯 A-L 组球队。
+- 球员：每队 4 名代表球员，共 192 名。
+- 球员卡：每名球员自动生成 1 张世界杯风格球员卡，共 192 张。
+- 赛程：按 A-L 组完整生成 72 场小组赛程，时间按北京时间存储。
+- 课程演示：额外保留 2 场已完赛热身赛，用于触发器失败、历史积分和行情变化演示。
+
+赛程、球队和球员名单参考 FIFA 官方赛程/球队/大名单页面及公开足球资料；球员卡类型、评分、虚拟价值、行情变化为课程演示用模拟数据。项目不爬取 eFootball 官方或第三方球员卡图片，不绕过登录或反爬限制。
+
+参考来源：
+
+- FIFA World Cup 2026 schedule: https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/match-schedule-fixtures-results-teams-stadiums
+- FIFA World Cup 2026 teams: https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/teams
+- FIFA squad announcement hub: https://www.fifa.com/en/articles/all-world-cup-squad-announcements
+- football-data.org API documentation: https://www.football-data.org/documentation/api
