@@ -1,0 +1,11 @@
+{
+  "name": "worldcup-card-guess",
+  "version": "1.0.0",
+  "private": true,
+  "description": "世界杯球员卡竞猜与行情管理系统",
+  "scripts": {
+    "dev:backend": "cd backend && npm.cmd run dev",
+    "dev:frontend": "cd frontend && npm.cmd run dev",
+    "build:frontend": "cd frontend && npm.cmd run build"
+  }
+}

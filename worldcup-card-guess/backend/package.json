@@ -1,0 +1,18 @@
+{
+  "name": "worldcup-card-guess-backend",
+  "version": "1.0.0",
+  "description": "Express API for the World Cup player card guessing database coursework.",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js",
+    "fetch-seed": "node src/scripts/fetch_seed_data.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mysql2": "^3.11.5"
+  }
+}
