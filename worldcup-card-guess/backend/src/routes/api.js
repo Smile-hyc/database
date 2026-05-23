@@ -86,6 +86,86 @@ router.get("/players", async (_req, res) => {
   }
 });
 
+router.get("/players/:playerId", async (req, res) => {
+  const playerId = Number(req.params.playerId);
+  if (!Number.isInteger(playerId)) {
+    return fail(res, new Error("球员编号不合法"));
+  }
+
+  try {
+    const [rows] = await pool.query(`
+      SELECT p.*, t.team_name, t.country_code, t.flag_url, c.card_id, c.card_name,
+             c.card_type, c.rarity, c.base_rating, c.current_rating, c.current_value, c.status AS card_status
+      FROM player p
+      JOIN national_team t ON p.team_id = t.team_id
+      LEFT JOIN player_card c ON p.player_id = c.player_id
+      WHERE p.player_id = ?
+      LIMIT 1
+    `, [playerId]);
+
+    if (!rows[0]) {
+      return fail(res, new Error("球员不存在"), 404);
+    }
+
+    ok(res, rows[0]);
+  } catch (error) {
+    fail(res, error, 500);
+  }
+});
+
+router.get("/squads/hot", async (_req, res) => {
+  const hotTeams = ["Brazil", "Argentina", "France", "England", "Portugal", "Spain", "Germany", "Netherlands"];
+  const teamOrder = hotTeams.map((team, index) => `WHEN '${team}' THEN ${index + 1}`).join(" ");
+  try {
+    const [rows] = await pool.query(`
+      SELECT t.team_id, t.team_name, t.country_code, t.flag_url, t.fifa_rank,
+             p.player_id, p.player_name, p.position, p.age, p.club, p.market_value,
+             c.card_id, c.card_type, c.rarity, c.current_rating, c.current_value, c.status AS card_status
+      FROM national_team t
+      JOIN player p ON t.team_id = p.team_id
+      LEFT JOIN player_card c ON p.player_id = c.player_id
+      WHERE t.team_name IN (?)
+      ORDER BY CASE t.team_name ${teamOrder} ELSE 99 END,
+               FIELD(p.position, 'GK', 'DF', 'MF', 'FW'), p.market_value DESC, p.player_name
+    `, [hotTeams]);
+
+    const teams = [];
+    const teamMap = new Map();
+    for (const row of rows) {
+      if (!teamMap.has(row.team_id)) {
+        const team = {
+          team_id: row.team_id,
+          team_name: row.team_name,
+          country_code: row.country_code,
+          flag_url: row.flag_url,
+          fifa_rank: row.fifa_rank,
+          positions: { GK: [], DF: [], MF: [], FW: [] }
+        };
+        teamMap.set(row.team_id, team);
+        teams.push(team);
+      }
+      teamMap.get(row.team_id).positions[row.position].push({
+        player_id: row.player_id,
+        player_name: row.player_name,
+        position: row.position,
+        age: row.age,
+        club: row.club,
+        market_value: row.market_value,
+        card_id: row.card_id,
+        card_type: row.card_type,
+        rarity: row.rarity,
+        current_rating: row.current_rating,
+        current_value: row.current_value,
+        card_status: row.card_status
+      });
+    }
+
+    ok(res, teams);
+  } catch (error) {
+    fail(res, error, 500);
+  }
+});
+
 router.get("/cards", async (_req, res) => {
   try {
     const [rows] = await pool.query(`

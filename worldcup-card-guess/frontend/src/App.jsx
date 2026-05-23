@@ -1,8 +1,9 @@
-import { BarChart3, CalendarCheck, CreditCard, Home, Medal, Shield, Trash2, Trophy } from "lucide-react";
+import { CalendarCheck, CreditCard, Home, Medal, Shield, Trash2, Trophy, UsersRound } from "lucide-react";
 import { useState } from "react";
 import Dashboard from "./pages/Dashboard.jsx";
 import GuessPage from "./pages/GuessPage.jsx";
 import MarketPage from "./pages/MarketPage.jsx";
+import SquadPage from "./pages/SquadPage.jsx";
 import RankingPage from "./pages/RankingPage.jsx";
 import FinishMatchPage from "./pages/FinishMatchPage.jsx";
 import MatchManagePage from "./pages/MatchManagePage.jsx";
@@ -11,6 +12,7 @@ const tabs = [
   { id: "dashboard", label: "首页", icon: Home },
   { id: "guess", label: "世界杯竞猜", icon: Trophy },
   { id: "market", label: "球员卡行情", icon: CreditCard },
+  { id: "squads", label: "国家队大名单", icon: UsersRound },
   { id: "ranking", label: "积分排行榜", icon: Medal },
   { id: "finish", label: "赛果录入", icon: CalendarCheck },
   { id: "manage", label: "比赛管理", icon: Trash2 }
@@ -22,6 +24,7 @@ export default function App() {
     dashboard: Dashboard,
     guess: GuessPage,
     market: MarketPage,
+    squads: SquadPage,
     ranking: RankingPage,
     finish: FinishMatchPage,
     manage: MatchManagePage
