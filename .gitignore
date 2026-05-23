@@ -1,0 +1,11 @@
+﻿*.doc
+*.docx
+~$*.doc
+~$*.docx
+node_modules/
+dist/
+.npm-cache/
+.env
+*.log
+.DS_Store
+Thumbs.db
