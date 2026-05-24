@@ -16,7 +16,6 @@ export default function RankingPage() {
     <div className="space-y-5">
       <div className="rounded-md bg-white p-5 shadow-soft ring-1 ring-slate-200">
         <h2 className="text-xl font-bold text-navy">积分排行榜页</h2>
-        <p className="mt-1 text-sm text-slate-500">后端 SQL 明确查询 SELECT * FROM v_user_ranking。</p>
       </div>
       <div className="overflow-hidden rounded-md bg-white shadow-soft ring-1 ring-slate-200">
         <table className="w-full min-w-[680px] text-left">

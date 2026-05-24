@@ -33,7 +33,6 @@ export default function MatchManagePage() {
     <div className="space-y-5">
       <div className="rounded-md bg-white p-5 shadow-soft ring-1 ring-slate-200">
         <h2 className="text-xl font-bold text-navy">比赛管理页</h2>
-        <p className="mt-1 text-sm text-slate-500">删除按钮调用事务接口，后端代码显式执行 START TRANSACTION / COMMIT / ROLLBACK。</p>
       </div>
       <Message type={message.type}>{message.text}</Message>
       <div className="overflow-hidden rounded-md bg-white shadow-soft ring-1 ring-slate-200">

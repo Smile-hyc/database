@@ -39,7 +39,6 @@ export default function FinishMatchPage() {
     <div className="space-y-5">
       <div className="rounded-md bg-white p-5 shadow-soft ring-1 ring-slate-200">
         <h2 className="text-xl font-bold text-navy">管理员赛果录入与结算页</h2>
-        <p className="mt-1 text-sm text-slate-500">点击后端接口调用 sp_finish_match_and_settle_points 存储过程。</p>
       </div>
       <Message type={message.type}>{message.text}</Message>
       {records.length > 0 && (

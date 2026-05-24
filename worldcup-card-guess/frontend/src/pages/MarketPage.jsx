@@ -17,7 +17,6 @@ export default function MarketPage() {
     <div className="space-y-5">
       <div className="rounded-md bg-white p-5 shadow-soft ring-1 ring-slate-200">
         <h2 className="text-xl font-bold text-navy">球员卡行情页</h2>
-        <p className="mt-1 text-sm text-slate-500">数据来自视图 v_card_market，适合截图展示视图查询。</p>
       </div>
       <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
         {cards.map((card) => (

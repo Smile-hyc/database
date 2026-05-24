@@ -46,7 +46,6 @@ export default function GuessPage() {
       <div className="flex flex-col gap-4 rounded-md bg-white p-5 shadow-soft ring-1 ring-slate-200 md:flex-row md:items-center md:justify-between">
         <div>
           <h2 className="text-xl font-bold text-navy">世界杯竞猜页</h2>
-          <p className="mt-1 text-sm text-slate-500">选择测试用户提交竞猜，触发器会拦截已结束比赛、重复竞猜和非法比分。</p>
         </div>
         <select value={selectedUser} onChange={(e) => setSelectedUser(e.target.value)} className="rounded-md border border-slate-300 px-3 py-2">
           {users.map((user) => <option key={user.user_id} value={user.user_id}>{user.nickname}</option>)}

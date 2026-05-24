@@ -44,9 +44,6 @@ export default function App() {
                 <h1 className="text-2xl font-bold tracking-normal md:text-3xl">世界杯球员卡竞猜与行情管理系统</h1>
               </div>
             </div>
-            <div className="rounded-md bg-white/10 px-4 py-3 text-sm text-white/80 ring-1 ring-white/20">
-              MySQL 事务 / 触发器 / 存储过程 / 视图演示
-            </div>
           </div>
           <nav className="flex gap-2 overflow-x-auto pb-1">
             {tabs.map((tab) => {

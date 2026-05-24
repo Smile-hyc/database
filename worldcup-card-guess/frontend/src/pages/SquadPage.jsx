@@ -57,9 +57,6 @@ export default function SquadPage() {
         <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="text-xl font-bold text-navy">国家队大名单</h2>
-            <p className="mt-1 text-sm text-slate-500">
-              展示热门球队的公开资料整理名单，点击球员查看基础信息与关联球员卡。
-            </p>
           </div>
           <div className="rounded-md bg-amber-50 px-4 py-2 text-sm font-semibold text-amber-700 ring-1 ring-amber-200">
             热门 8 队 · 每队 18 人
