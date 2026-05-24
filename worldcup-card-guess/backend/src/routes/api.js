@@ -9,6 +9,41 @@ const fail = (res, error, status = 400) => {
   return res.status(status).json({ success: false, message });
 };
 
+const failWithMessage = (res, message, status = 400) =>
+  res.status(status).json({ success: false, message });
+
+async function getGuessFriendlyError(payload, error) {
+  const rawMessage = error?.sqlMessage || error?.message || "";
+  const { user_id, match_id, guess_home_score, guess_away_score } = payload;
+  if (Number(guess_home_score) < 0 || Number(guess_away_score) < 0) {
+    return "预测比分不能为负数";
+  }
+
+  const [[match]] = await pool.query(
+    "SELECT match_id, status, NOW() >= match_time AS has_started FROM worldcup_match WHERE match_id = ?",
+    [match_id]
+  );
+  if (!match) {
+    return "比赛不存在，不能提交竞猜";
+  }
+  if (match.status !== "upcoming") {
+    return "比赛不是未开始状态，不能提交竞猜";
+  }
+  if (Number(match.has_started) === 1) {
+    return "比赛已经开始，不能再提交竞猜";
+  }
+
+  const [[duplicate]] = await pool.query(
+    "SELECT COUNT(*) AS total FROM match_guess WHERE user_id = ? AND match_id = ?",
+    [user_id, match_id]
+  );
+  if (duplicate.total > 0) {
+    return "同一个用户对同一场比赛只能竞猜一次";
+  }
+
+  return rawMessage || "竞猜提交失败，请检查比赛状态和预测比分";
+}
+
 router.get("/dashboard", async (_req, res) => {
   try {
     const [[teamCount], [cardCount], [openGuessCount], [topCards], [upcomingMatches], [currentUser]] =
@@ -222,7 +257,8 @@ router.post("/guesses", async (req, res) => {
     );
     ok(res, { guess_id: result.insertId }, "竞猜提交成功");
   } catch (error) {
-    fail(res, error);
+    const message = await getGuessFriendlyError(req.body, error);
+    failWithMessage(res, message);
   }
 });
 
