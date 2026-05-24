@@ -41,7 +41,7 @@ export default function App() {
               </div>
               <div>
                 <p className="text-sm text-white/70">Database Coursework</p>
-                <h1 className="text-2xl font-bold tracking-normal md:text-3xl">世界杯球员卡竞猜与行情管理系统</h1>
+                <h1 className="text-2xl font-bold tracking-normal md:text-3xl">世界杯竞猜与实况足球球员卡数据管理系统</h1>
               </div>
             </div>
           </div>
