@@ -1,3 +1,5 @@
+SET NAMES utf8mb4;
+
 DELIMITER //
 
 DROP PROCEDURE IF EXISTS sp_finish_match_and_settle_points//
