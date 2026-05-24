@@ -1,4 +1,4 @@
-SET NAMES utf8mb4;
+SET NAMES utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 
 DELIMITER //
 
@@ -11,8 +11,8 @@ CREATE PROCEDURE sp_finish_match_and_settle_points(
 )
 BEGIN
   DECLARE v_match_count INT DEFAULT 0;
-  DECLARE v_status VARCHAR(20);
-  DECLARE v_result VARCHAR(10);
+  DECLARE v_status VARCHAR(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+  DECLARE v_result VARCHAR(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 
   DECLARE EXIT HANDLER FOR SQLEXCEPTION
   BEGIN
